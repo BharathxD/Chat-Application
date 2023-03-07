@@ -1,10 +1,16 @@
+import { useState } from "react";
 import { Fragment } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 const App = () => {
   return (
-    <Fragment>
-      <h1>Hello World</h1>
-    </Fragment>
+    <div className="app">
+      <Routes>
+        <Route>
+          <Route path={"/chat"} element={<Chat />} />
+        </Route>
+      </Routes>
+    </div>
   );
 };
 
