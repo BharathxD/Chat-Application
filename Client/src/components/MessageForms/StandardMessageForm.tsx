@@ -1,6 +1,8 @@
-import { XMarkIcon } from "@heroicons/react/24/solid";
-import React, { FormEvent, useState } from "react";
+import { PaperClipIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import { url } from "inspector";
+import React, { FormEvent, Fragment, useState } from "react";
 import { ChatObject, MessageFormProps } from "react-chat-engine-advanced";
+import Dropzone from "react-dropzone";
 
 type Props = {
   props: MessageFormProps;
@@ -44,6 +46,27 @@ const StandardMessageForm: React.FC<Props> = ({ props, activeChat }) => {
             }
             placeholder="Message..."
           />
+        </div>
+        <div className="message-form-icons">
+          <Dropzone
+            multiple={false}
+            noClick={true}
+            onDrop={(acceptedFiles: any) => {
+              setAttachment(acceptedFiles[0]);
+              setPreview(URL.createObjectURL(acceptedFiles[0]));
+            }}
+          >
+            {({ getRootProps, getInputProps, open }) => (
+              <Fragment>
+                <div {...getRootProps()} />
+                <div {...getInputProps()} />
+                <PaperClipIcon
+                  className="message-form-icon-clip"
+                  onClick={open}
+                />
+              </Fragment>
+            )}
+          </Dropzone>
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import {
 } from "react-chat-engine-advanced";
 import Header from "../Layout/Header";
 import StandardMessageForm from "../MessageForms/StandardMessageForm";
+import { useEffect } from "react";
 
 const Chat: React.FC = () => {
   const projectID = import.meta.env.VITE_PROJECT_ID;
@@ -13,7 +14,7 @@ const Chat: React.FC = () => {
   const chatProps = useMultiChatLogic(projectID, username, secret);
   return (
     <div style={{ flexBasis: "100%" }}>
-      <MultiChatSocket {...chatProps} />
+      {/* <MultiChatSocket {...chatProps} /> */}
       <MultiChatWindow
         {...chatProps}
         style={{ height: "100vh" }}
