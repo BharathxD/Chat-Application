@@ -8,14 +8,18 @@ type HeaderProps = {
 
 const Header: React.FC<HeaderProps> = ({ chat }) => {
   return (
-    <div className={"chatHeader"}>
-      <div className={"flexBetween"}>
-        <ChatBubbleLeftRightIcon className={"icon-chat"} />
-        <h3 className={"header-text"}>{chat.title}</h3>
+    <div className="chat-header">
+      <div className="flexbetween">
+        <ChatBubbleLeftRightIcon className="icon-chat" />
+        <h3 className="header-text">{chat.title}</h3>
       </div>
-      <div className={"flexbetween"}>
-        <PhoneIcon className={"icon-phone"} />
-        <p className={"header-text"}>{chat.description}</p>
+      <div className="flexbetween">
+        <PhoneIcon className="icon-phone" />
+        {chat.description !== "⬅️ ⬅️ ⬅️" ? (
+          <p className="header-text">{chat.description}</p>
+        ) : (
+          <p className="header-text">no chat selected</p>
+        )}
       </div>
     </div>
   );

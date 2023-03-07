@@ -6,9 +6,9 @@ import {
 import Header from "../Layout/Header";
 import StandardMessageForm from "../MessageForms/StandardMessageForm";
 
-const Chat = () => {
+const Chat: React.FC = () => {
   const projectID = import.meta.env.VITE_PROJECT_ID;
-  const username = "TestUser";
+  const username = "test-user";
   const secret = "123456";
   const chatProps = useMultiChatLogic(projectID, username, secret);
   return (
