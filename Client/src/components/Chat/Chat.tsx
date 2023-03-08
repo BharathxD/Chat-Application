@@ -1,29 +1,28 @@
 import {
   useMultiChatLogic,
-  MultiChatSocket,
   MultiChatWindow,
+  MessageFormProps,
 } from "react-chat-engine-advanced";
 import Header from "../Layout/Header";
 import StandardMessageForm from "../MessageForms/StandardMessageForm";
-import { useEffect } from "react";
 
-const Chat: React.FC = () => {
+const Chat = () => {
   const projectID = import.meta.env.VITE_PROJECT_ID;
   const username = "test-user";
   const secret = "123456";
   const chatProps = useMultiChatLogic(projectID, username, secret);
+
+  const renderMessageForm = (props: MessageFormProps) => (
+    <StandardMessageForm props={props} activeChat={chatProps.chat} />
+  );
+
   return (
     <div style={{ flexBasis: "100%" }}>
-      {/* <MultiChatSocket {...chatProps} /> */}
       <MultiChatWindow
         {...chatProps}
         style={{ height: "100vh" }}
         renderChatHeader={(chat) => <Header chat={chat} />}
-        renderMessageForm={(props) => {
-          return (
-            <StandardMessageForm props={props} activeChat={chatProps.chat} />
-          );
-        }}
+        renderMessageForm={renderMessageForm}
       />
     </div>
   );
